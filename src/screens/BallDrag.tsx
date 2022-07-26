@@ -27,10 +27,10 @@ const BallDrag = () => {
     return {
       transform: [
         {
-          translateX: offset.value.x,
+          translateX: withSpring(offset.value.x, {damping: 7, stiffness: 200}),
         },
         {
-          translateY: offset.value.y,
+          translateY: withSpring(offset.value.y, {damping: 7, stiffness: 200}),
         },
         {
           scale: withSpring(isPressed.value ? 1.5 : 1),
