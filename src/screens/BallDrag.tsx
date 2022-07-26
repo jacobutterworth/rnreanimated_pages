@@ -22,15 +22,26 @@ const BallDrag = () => {
   const isPressed = useSharedValue(false);
   const offset = useSharedValue({ x: 0, y: 0 });
   const start = useSharedValue({ x: 0, y: 0 });
+  const springOffset = useSharedValue(0);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [
         {
-          translateX: withSpring(offset.value.x, {damping: 7, stiffness: 200}),
+          translateX: withSpring(offset.value.x, {
+            damping: 10,
+            mass: 0.8,
+            stiffness: 200,
+            // overshootClamping: true,
+          }),
         },
         {
-          translateY: withSpring(offset.value.y, {damping: 7, stiffness: 200}),
+          translateY: withSpring(offset.value.y, {
+            damping: 10,
+            mass: 0.8,
+            stiffness: 200,
+            // overshootClamping: true,
+          }),
         },
         {
           scale: withSpring(isPressed.value ? 1.5 : 1),
@@ -64,32 +75,18 @@ const BallDrag = () => {
     Alert.alert('Single tap!');
   });
 
-  // const gesture = Gesture.Pan()
-  //   .onStart(() => {
-  //     console.log('here');
-  //   })
-  //   .onUpdate((event) => {
-  //     console.log(event);
-  //   })
-  //   .onEnd(() => {
-  //     console.log('endd');
-  //   });
-
-  // const tapGestureEvent =
-  //   useAnimatedGestureHandler<TapGestureHandlerGestureEvent>({
-  //     onStart: (tapEvent) => {
-  //       console.log('in tap event');
-  //     },
-  //     onActive: () => {
-  //       console.log('active');
-  //     },
-  //   });
-
-  // const rBottomSheetStyle = useAnimatedStyle(() => {
-  //   return {
-  //     transform: [{ translateY: translateY.value }],
-  //   };
-  // });
+  const customSpringStyles = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: withSpring(springOffset.value * 255, {
+            damping: 20,
+            stiffness: 90,
+          }),
+        },
+      ],
+    };
+  });
 
   return (
     <GestureHandlerRootView style={styles.container}>
