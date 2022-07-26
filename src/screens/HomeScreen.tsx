@@ -13,7 +13,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
     <View style={styles.container}>
       <Spacer>
         <Button
-          title="Anim 1"
+          title="Anim 1 - draggable ball"
           onPress={() => {
             navigation.navigate('Ball', {});
           }}
@@ -21,7 +21,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       </Spacer>
       <Spacer>
         <Button
-          title="Anim 2"
+          title="Anim 2 - tap react"
           onPress={() => {
             navigation.navigate('Box', {});
           }}
@@ -29,7 +29,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       </Spacer>
       <Spacer>
         <Button
-          title="Anim 3"
+          title="Anim 3 - box react to input"
           onPress={() => {
             navigation.navigate('FidgetBox', {});
           }}
