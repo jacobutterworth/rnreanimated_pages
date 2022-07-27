@@ -35,6 +35,14 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
           }}
         />
       </Spacer>
+      <Spacer>
+        <Button
+          title="Anim 4 - tilt box"
+          onPress={() => {
+            navigation.navigate('TiltBox', {});
+          }}
+        />
+      </Spacer>
     </View>
   );
 };

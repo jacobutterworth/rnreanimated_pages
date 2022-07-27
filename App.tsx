@@ -5,6 +5,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import BallDrag from './src/screens/BallDrag';
 import Box from './src/screens/Box';
 import FidgetBox from './src/screens/FidgetBox';
+import TiltBox from './src/screens/tiltBox';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -30,6 +31,11 @@ export default function App() {
         <Stack.Screen
           name="FidgetBox"
           component={FidgetBox}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TiltBox"
+          component={TiltBox}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
