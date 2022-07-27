@@ -64,7 +64,7 @@ const FidgetBox: React.FC<Props> = ({}) => {
     .onChange((e) => {
       let changeDistance = distance(e.changeX, e.changeY);
       e.changeX = e.changeX * 2;
-      e.changeY = e.changeY * 4;
+      e.changeY = e.changeY * 2;
       bottomCurve.value = {
         borderBottomLeftRadius:
           bottomCurve.value.borderBottomLeftRadius - e.changeY,
@@ -105,13 +105,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    height: 550,
+    height: 350,
     width: 350,
     borderColor: 'blue',
     borderWidth: 5,
     // borderRadius: 10,
     // borderBottomLeftRadius: 10,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
 });
 
