@@ -88,21 +88,6 @@ const FidgetBox: React.FC<Props> = ({}) => {
       };
     });
 
-  // .hitSlop({ top: 10, bottom: 10, left: 10, right: 10 });
-  // const tapGesture = Gesture.Tap()
-  //   .onTouchesDown((e) => {
-  //     size.value = {
-  //       height: size.value.height + 10,
-  //       width: size.value.width + 10,
-  //     };
-  //   })
-  //   .onFinalize((e) => {
-  //     size.value = {
-  //       height: originalSize.value.height,
-  //       width: originalSize.value.width,
-  //     };
-  //   });
-
   return (
     <GestureHandlerRootView style={styles.container}>
       <GestureDetector gesture={panGesture}>
@@ -126,6 +111,7 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     // borderRadius: 10,
     // borderBottomLeftRadius: 10,
+    overflow: 'hidden'
   },
 });
 

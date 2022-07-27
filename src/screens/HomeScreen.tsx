@@ -43,6 +43,14 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
           }}
         />
       </Spacer>
+      <Spacer>
+        <Button
+          title="Anim 5 - rotate box"
+          onPress={() => {
+            navigation.navigate('RotateBox', {});
+          }}
+        />
+      </Spacer>
     </View>
   );
 };
