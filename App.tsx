@@ -7,6 +7,7 @@ import Box from './src/screens/Box';
 import FidgetBox from './src/screens/FidgetBox';
 import TiltBox from './src/screens/tiltBox';
 import RotateBox from './src/screens/RotateBox';
+import FidgetBox2 from './src/screens/FidgetBox2';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -42,6 +43,12 @@ export default function App() {
         <Stack.Screen
           name="RotateBox"
           component={RotateBox}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="FidgetBox2"
+          component={FidgetBox2}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
