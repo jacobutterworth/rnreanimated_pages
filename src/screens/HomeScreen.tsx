@@ -29,7 +29,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       </Spacer>
       <Spacer>
         <Button
-          title="Anim 3 - box react to input"
+          title="Anim 3 - fidget box 1"
           onPress={() => {
             navigation.navigate('FidgetBox', {});
           }}
@@ -48,6 +48,14 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
           title="Anim 5 - rotate box"
           onPress={() => {
             navigation.navigate('RotateBox', {});
+          }}
+        />
+      </Spacer>
+      <Spacer>
+        <Button
+          title="Anim 6 - fidget box 2"
+          onPress={() => {
+            navigation.navigate('FidgetBox2', {});
           }}
         />
       </Spacer>
