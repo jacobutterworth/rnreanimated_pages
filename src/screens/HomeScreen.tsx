@@ -37,7 +37,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       </Spacer>
       <Spacer>
         <Button
-          title="Anim 4 - tilt box"
+          title="Anim 4 - tilt box - iOS only"
           onPress={() => {
             navigation.navigate('TiltBox', {});
           }}
@@ -45,7 +45,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       </Spacer>
       <Spacer>
         <Button
-          title="Anim 5 - rotate box"
+          title="Anim 5 - 2 finger rotate + pinch box"
           onPress={() => {
             navigation.navigate('RotateBox', {});
           }}
@@ -53,9 +53,17 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       </Spacer>
       <Spacer>
         <Button
-          title="Anim 6 - fidget box 2"
+          title="Anim 6 - fling bubbles idk "
           onPress={() => {
-            navigation.navigate('FidgetBox2', {});
+            navigation.navigate('FlingBubbles', {});
+          }}
+        />
+      </Spacer>
+      <Spacer>
+        <Button
+          title="Anim 5 - 2 finger rotate + pinch box"
+          onPress={() => {
+            navigation.navigate('RotateBox', {});
           }}
         />
       </Spacer>

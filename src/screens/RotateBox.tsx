@@ -112,10 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
     height: 300,
     width: 300,
-    // borderColor: 'blue',
-    // borderWidth: 5,
-    // borderRadius: 10,
-    // borderBottomLeftRadius: 10,
+    borderRadius: 20,
   },
 });
 export default RotateBox;

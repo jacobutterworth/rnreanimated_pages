@@ -30,10 +30,10 @@ const Box: React.FC<Props> = ({}) => {
     return {
       transform: [
         {
-          scaleX: withTiming(size.value.width, {duration: 50}),
+          scaleX: withTiming(size.value.width, { duration: 50 }),
         },
         {
-          scaleY: withTiming(size.value.height, {duration: 50}),
+          scaleY: withTiming(size.value.height, { duration: 50 }),
         },
       ],
     };

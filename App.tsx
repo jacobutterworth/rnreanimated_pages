@@ -8,6 +8,7 @@ import FidgetBox from './src/screens/FidgetBox';
 import TiltBox from './src/screens/tiltBox';
 import RotateBox from './src/screens/RotateBox';
 import FidgetBox2 from './src/screens/FidgetBox2';
+import FlingBubbles from './src/screens/FlingBubbles';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -46,9 +47,10 @@ export default function App() {
           options={{ headerShown: false }}
         />
 
+        <Stack.Screen name="FidgetBox2" component={FidgetBox2} />
         <Stack.Screen
-          name="FidgetBox2"
-          component={FidgetBox2}
+          name="FlingBubbles"
+          component={FlingBubbles}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

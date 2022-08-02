@@ -26,7 +26,7 @@ import {
   Directions,
 } from 'react-native-gesture-handler';
 import { ReactChild } from 'react';
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
 
 interface Props {
   children: ReactChild;
@@ -115,12 +115,17 @@ const FidgetBox2: React.FC<Props> = ({}) => {
         <Animated.View style={[styles.box, animatedStyle]}></Animated.View>
       </GestureDetector>
       <View style={styles.bottomButton}>
-      <Text style={{fontSize: 18}}> Current weight:</Text>
+        <Text style={{ fontSize: 18 }}> Current weight:</Text>
         <View style={styles.weightAdjust}>
           {/* <View></View> */}
           <AntDesign name="minus" size={40} color="black" />
-          <Text style={{fontSize: 18}}> {weight.value}</Text>
-          <AntDesign name="plus" size={40} color="black" style={styles.adjustButton}/>
+          <Text style={{ fontSize: 18 }}> {weight.value}</Text>
+          <AntDesign
+            name="plus"
+            size={40}
+            color="black"
+            style={styles.adjustButton}
+          />
         </View>
       </View>
     </GestureHandlerRootView>
@@ -150,7 +155,6 @@ const styles = StyleSheet.create({
     // borderColor: 'red',
     // borderWidth: 2,
     alignItems: 'center',
-
   },
   weightAdjust: {
     flexDirection: 'row',
@@ -162,8 +166,8 @@ const styles = StyleSheet.create({
   },
   adjustButton: {
     borderColor: 'red',
-    borderWidth:2,
-  }
+    borderWidth: 2,
+  },
 });
 
 export default FidgetBox2;
