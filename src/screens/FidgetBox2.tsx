@@ -1,5 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { Alert, StyleSheet, Text, View, Dimensions } from 'react-native';
+import {
+  Alert,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Button,
+} from 'react-native';
 import Animated, {
   Easing,
   Extrapolate,
@@ -19,12 +26,14 @@ import {
   Directions,
 } from 'react-native-gesture-handler';
 import { ReactChild } from 'react';
+import { AntDesign } from '@expo/vector-icons'; 
 
 interface Props {
   children: ReactChild;
 }
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const FidgetBox2: React.FC<Props> = ({}) => {
   const size = useSharedValue({ height: 100, width: 100 });
@@ -33,7 +42,7 @@ const FidgetBox2: React.FC<Props> = ({}) => {
   const start = useSharedValue({ x: 0, y: 0 });
   const isPressed = useSharedValue(false);
   const position = useSharedValue(0);
-
+  const weight = useSharedValue(0.8);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -55,14 +64,14 @@ const FidgetBox2: React.FC<Props> = ({}) => {
           }),
         },
         {
-            translateY: position.value
+          translateY: position.value,
         },
         {
           scale: withSpring(isPressed.value ? 0.75 : 1),
         },
       ],
       height: size.value.height,
-      width: size.value.width
+      width: size.value.width,
     };
   });
 
@@ -93,20 +102,27 @@ const FidgetBox2: React.FC<Props> = ({}) => {
   const flingGesture = Gesture.Fling()
     .direction(Directions.RIGHT)
     .onStart((e) => {
-        console.log('in fkd');
-        
+      console.log('in fkd');
+
       position.value = withTiming(position.value + 300, { duration: 100 });
-    }).onEnd();
+    });
 
-
-    const dragFling = Gesture.Simultaneous(panGesture, flingGesture);
-
+  const dragFling = Gesture.Simultaneous(panGesture);
 
   return (
     <GestureHandlerRootView style={styles.container}>
       <GestureDetector gesture={dragFling}>
         <Animated.View style={[styles.box, animatedStyle]}></Animated.View>
       </GestureDetector>
+      <View style={styles.bottomButton}>
+      <Text style={{fontSize: 18}}> Current weight:</Text>
+        <View style={styles.weightAdjust}>
+          {/* <View></View> */}
+          <AntDesign name="minus" size={40} color="black" />
+          <Text style={{fontSize: 18}}> {weight.value}</Text>
+          <AntDesign name="plus" size={40} color="black" style={styles.adjustButton}/>
+        </View>
+      </View>
     </GestureHandlerRootView>
   );
 };
@@ -119,13 +135,35 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-
+    marginTop: SCREEN_HEIGHT / 2,
     borderColor: 'blue',
     borderWidth: 5,
     borderRadius: 10,
     // borderBottomLeftRadius: 10,
     overflow: 'hidden',
   },
+  bottomButton: {
+    marginHorizontal: 40,
+    justifyContent: 'flex-end',
+    flex: 1,
+    marginBottom: 20,
+    // borderColor: 'red',
+    // borderWidth: 2,
+    alignItems: 'center',
+
+  },
+  weightAdjust: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    flexBasis: 'auto',
+    // borderColor: 'blue',
+    // borderWidth: 2
+  },
+  adjustButton: {
+    borderColor: 'red',
+    borderWidth:2,
+  }
 });
 
 export default FidgetBox2;
