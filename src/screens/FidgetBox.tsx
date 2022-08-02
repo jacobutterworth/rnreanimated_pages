@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { Alert, StyleSheet, Text, View, Dimensions } from 'react-native';
 import Animated, {
   Easing,

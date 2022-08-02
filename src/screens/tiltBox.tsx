@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { Alert, StyleSheet, Text, View, Dimensions } from 'react-native';
 import Animated, {
   Easing,
@@ -19,7 +18,6 @@ import {
   Gesture,
   GestureHandlerRootView,
 } from 'react-native-gesture-handler';
-import { ReactChild } from 'react';
 
 interface Props {}
 

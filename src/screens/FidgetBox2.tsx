@@ -25,7 +25,7 @@ import {
   GestureHandlerRootView,
   Directions,
 } from 'react-native-gesture-handler';
-import { ReactChild } from 'react';
+import { ReactChild, useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
 interface Props {
@@ -42,7 +42,8 @@ const FidgetBox2: React.FC<Props> = ({}) => {
   const start = useSharedValue({ x: 0, y: 0 });
   const isPressed = useSharedValue(false);
   const position = useSharedValue(0);
-  const weight = useSharedValue(0.8);
+
+  const [weight, setWeight] = useState(0.8);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -50,7 +51,7 @@ const FidgetBox2: React.FC<Props> = ({}) => {
         {
           translateX: withSpring(offset.value.x, {
             damping: 10,
-            mass: 0.8,
+            mass: weight,
             stiffness: 200,
             // overshootClamping: true,
           }),
@@ -58,7 +59,7 @@ const FidgetBox2: React.FC<Props> = ({}) => {
         {
           translateY: withSpring(offset.value.y, {
             damping: 10,
-            mass: 0.8,
+            mass: weight,
             stiffness: 200,
             // overshootClamping: true,
           }),
@@ -97,6 +98,13 @@ const FidgetBox2: React.FC<Props> = ({}) => {
         y: offset.value.y,
       };
       isPressed.value = false;
+    })
+    .onFinalize(() => {
+      start.value = {
+        x: offset.value.x,
+        y: offset.value.y,
+      };
+      isPressed.value = false;
     });
 
   const flingGesture = Gesture.Fling()
@@ -118,13 +126,28 @@ const FidgetBox2: React.FC<Props> = ({}) => {
         <Text style={{ fontSize: 18 }}> Current weight:</Text>
         <View style={styles.weightAdjust}>
           {/* <View></View> */}
-          <AntDesign name="minus" size={40} color="black" />
-          <Text style={{ fontSize: 18 }}> {weight.value}</Text>
+          <AntDesign
+            name="minus"
+            size={40}
+            color="black"
+            style={styles.adjustButton}
+            onPress={() => {
+              if (weight < 0.1) {
+                setWeight(0.000001);
+              } else {
+                setWeight(weight - 0.2);
+              }
+            }}
+          />
+          <Text style={{ fontSize: 18 }}> {weight.toFixed(1)}</Text>
           <AntDesign
             name="plus"
             size={40}
             color="black"
             style={styles.adjustButton}
+            onPress={() => {
+              setWeight(weight + 0.2);
+            }}
           />
         </View>
       </View>
@@ -165,6 +188,11 @@ const styles = StyleSheet.create({
     // borderWidth: 2
   },
   adjustButton: {
+    // borderColor: 'red',
+    // borderWidth: 2,
+    paddingHorizontal: 20,
+  },
+  debug: {
     borderColor: 'red',
     borderWidth: 2,
   },

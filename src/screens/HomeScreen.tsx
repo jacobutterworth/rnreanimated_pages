@@ -61,9 +61,9 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       </Spacer>
       <Spacer>
         <Button
-          title="Anim 5 - 2 finger rotate + pinch box"
+          title="Anim 6 - weight box "
           onPress={() => {
-            navigation.navigate('RotateBox', {});
+            navigation.navigate('FidgetBox2', {});
           }}
         />
       </Spacer>

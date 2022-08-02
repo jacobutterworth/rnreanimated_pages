@@ -47,10 +47,9 @@ export default function App() {
           options={{ headerShown: false }}
         />
 
-        <Stack.Screen name="FidgetBox2" component={FidgetBox2} />
         <Stack.Screen
-          name="FlingBubbles"
-          component={FlingBubbles}
+          name="FidgetBox2"
+          component={FidgetBox2}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
